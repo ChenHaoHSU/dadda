@@ -16,7 +16,7 @@ module DADDA_8x8(a, b, out);
   // Input/output ports
   ////////////////////////////
   input [BIT - 1 : 0] a, b;
-  output [(BIT * 2) - 2 : 0] out;
+  output [(BIT * 2) - 1 : 0] out;
   
   ////////////////////////////
   // Wires
@@ -100,7 +100,7 @@ module DADDA_8x8(a, b, out);
 
   /// assign result to output
   assign out[0] = p[0];
-  assign out[14:1] = cpa_sum[13:0];
+  assign out[15:1] = cpa_sum[14:0];
 
 endmodule
 

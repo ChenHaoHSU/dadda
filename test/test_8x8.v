@@ -1,8 +1,8 @@
 `timescale 1ns/10ps
-`define CYCLE 20
-`define END_CYCLE 1000 // How many cycles of the whole simulation
+`define CYCLE 10
+`define END_CYCLE 2000 // How many cycles of the whole simulation
 `define BIT 8
-`define N_DATA 5
+`define N_DATA 100
 
 module test;
 	reg clock;
@@ -11,8 +11,8 @@ module test;
   reg [`BIT - 1 : 0] data_in_a;
   reg [`BIT - 1 : 0] data_in_b;
   
-  wire [`BIT * 2 - 2 : 0] data_out;
-  reg [`BIT * 2 - 2 : 0] golden_data;
+  wire [`BIT * 2 - 1 : 0] data_out;
+  reg [`BIT * 2 - 1 : 0] golden_data;
 
   reg [9:0] data_idx;
   
@@ -31,16 +31,6 @@ module test;
     j = 0;
     n_fail = 0;
   end
-
-  //initial begin
-    //for (i = 0; i < `N_DATA; i = i + 1) begin
-      //$display("[%4d] %4d * %4d = %6d",
-        //i,
-        //data_mem[i][`BIT * 2 - 1 : `BIT],
-        //data_mem[i][`BIT - 1 : 0],
-        //golden_mem[i]);
-    //end
-  //end
 
   initial begin
     clock = 0;
