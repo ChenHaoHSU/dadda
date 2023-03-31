@@ -1,0 +1,5 @@
+*.log
+*.out
+xcelium.d/
+xmverilog.history
+xmverilog.log

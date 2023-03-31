@@ -1,0 +1,5 @@
+module load synopsys/2018
+vcs -full64 -f master16 -debug
+./simv -gui &
+design_vision -64bit -tcl_mode &
+ncverilog test/test_8x8.v src/adder.v src/dadda_8x8.v
