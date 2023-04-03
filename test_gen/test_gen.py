@@ -18,11 +18,6 @@ for i in range(data_num):
     b = random.randint(data_min, data_max); 
     p = a * b
 
-    print('a', a, hex(a)[2:].zfill(2))
-    print('b', b, hex(b)[2:].zfill(2))
-    print('p', p, hex(p)[2:].zfill(4))
-    print('')
-
     data_f.write('{}{}\n'.format(hex(a)[2:].zfill(2), hex(b)[2:].zfill(2)))
     golden_f.write('{}\n'.format(hex(p)[2:].zfill(4)))
 
