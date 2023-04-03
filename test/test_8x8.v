@@ -12,7 +12,7 @@ module test;
   reg [`BIT - 1 : 0] data_in_b;
   
   wire [`BIT * 2 - 1 : 0] data_out;
-  reg [`BIT * 2 - 1 : 0] golden_data;
+  reg  [`BIT * 2 - 1 : 0] golden_data;
 
   reg [9:0] data_idx;
   
@@ -60,7 +60,7 @@ module test;
 	
   always @ (posedge clock) begin
     if (data_valid) begin 
-      if (data_out != golden_data) begin
+      if (data_out !== golden_data) begin
         n_fail = n_fail + 1;
         $display("Wrong!! Data %5d, %4d * %4d: %8d (test) != %8d (golden)",
           data_idx, data_in_a, data_in_b, data_out, golden_data);
