@@ -15,14 +15,14 @@ module test;
   reg [`BIT * 2 - 1 : 0] golden_data;
 
   reg [9:0] data_idx;
-  
+
   //////////////////////////////////////
   /// Read input data & golden answer
   //////////////////////////////////////
   reg [`BIT * 2 - 1 : 0] data_mem [0 : `N_DATA - 1];
-  initial $readmemh("./data/mul8x8.dat", data_mem);
+  initial $readmemh("./data/mul16x16.dat", data_mem);
   reg [`BIT * 2 - 1 : 0] golden_mem [0 : `N_DATA - 1];
-  initial $readmemh("./data/mul8x8_golden.dat", golden_mem);
+  initial $readmemh("./data/mul16x16_golden.dat", golden_mem);
 
   integer i, j;
   integer n_fail;
@@ -62,20 +62,20 @@ module test;
     if (data_valid) begin 
       if (data_out != golden_data) begin
         n_fail = n_fail + 1;
-        $display("Wrong!! Data %5d, %4d * %4d: %8d (test) != %8d (golden)",
+        $display("Wrong!! Data %5d, %5d * %5d: %10d (test) != %10d (golden)",
           data_idx, data_in_a, data_in_b, data_out, golden_data);
       end else begin
-        $display("Correct!! Data %5d, %4d * %4d: %8d (test) == %8d (golden)",
+        $display("Correct!! Data %5d, %5d * %5d: %10d (test) == %10d (golden)",
           data_idx, data_in_a, data_in_b, data_out, golden_data);
       end
     end
   end
 
 
-  DADDA_8x8 mul(
-    .a(data_in_a),
-    .b(data_in_b),
-    .out(data_out)
+  DADDA_16x16 mul(
+    .a(data_in_a)
+    ,.b(data_in_b)
+    ,.out(data_out)
   );
 
   always begin 

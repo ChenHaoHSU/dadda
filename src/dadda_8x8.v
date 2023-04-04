@@ -28,7 +28,6 @@ module DADDA_8x8(a, b, out);
   ////////////////////////////
   // Dadda cores
   ////////////////////////////
-  //integer i, j;
   /// Level 0 (height = 8)
   genvar i, j;
   generate
