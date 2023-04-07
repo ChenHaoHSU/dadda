@@ -1,6 +1,7 @@
 ////////////////////////////////////////////
 // Filename: adder.v
-// Synopsis: half adder, full adder
+// Synopsis: half adder, full adder,
+//           4:2 compressor
 // Author: Chen-Hao Hsu
 // Date: Mar 30, 2023
 ////////////////////////////////////////////
@@ -53,4 +54,37 @@ module full_adder (
 
 endmodule
 
+////////////////////////////
+// 4:2 Compressor
+////////////////////////////
+module compress42 (
+  input a,
+  input b,
+  input c,
+  input d,
+  input cin,
+  output sum,
+  output carry,
+  output cout
+);
+  
+  wire fa1_sum;
+
+  full_adder FA1(
+    .a(a),
+    .b(b),
+    .cin(c),
+    .sum(fa1_sum),
+    .cout(cout)
+  );
+  
+  full_adder FA2(
+    .a(fa1_sum),
+    .b(d),
+    .cin(cin),
+    .sum(sum),
+    .cout(carry)
+  );
+
+endmodule
 
