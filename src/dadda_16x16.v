@@ -1,13 +1,11 @@
 ////////////////////////////////////////////
-// Filename: dadda16.v
+// Filename: dadda_16x16.v
 // Synopsis: 16-by-16 Dadda multiplier
 // Author: Chen-Hao Hsu
 // Date: April 3, 2023
 ////////////////////////////////////////////
 
-module DADDA_16x16(a, b, out, check);
-  output [55:12] check;
-
+module DADDA_16x16(a, b, out);
   ////////////////////////////
   // Parameters
   ////////////////////////////
@@ -25,8 +23,6 @@ module DADDA_16x16(a, b, out, check);
   wire [(BIT * BIT) - 1 : 0] p;
   wire [209:0] s;
   wire [209:0] c;
-
-  assign check[55:12] = c[55:12];
 
   ////////////////////////////
   // Dadda cores
