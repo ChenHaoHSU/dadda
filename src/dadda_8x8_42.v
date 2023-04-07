@@ -23,9 +23,9 @@ module DADDA_8x8_42(a, b, out);
   // Wires
   ////////////////////////////
   wire [(BIT * BIT) - 1 : 0] p;
-  wire [41:0] s; // sum
-  wire [41:0] c; // carry
-  wire [41:0] o; // cout
+  wire [23:0] s; // sum
+  wire [23:0] c; // carry
+  wire [23:0] o; // cout
 
   ////////////////////////////
   // Dadda cores

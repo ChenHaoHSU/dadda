@@ -72,7 +72,7 @@ module test;
   end
 
 
-  DADDA_8x8 mul(
+  DADDA_8x8_52 mul(
     .a(data_in_a),
     .b(data_in_b),
     .out(data_out)
