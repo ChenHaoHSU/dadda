@@ -6,7 +6,7 @@
 
 # for i in range(0, 112 - 91):
     # print('compress42 CP{}(s[{}], c[{}], s[{}], c[{}], o[{}], s[{}], c[{}], o[{}]);'.format(i+91, 2*i+48, 2*i+46, 2*i+49, 2*i+47, i+91-1, i+91, i+91, i+91))
-for i in range(0, 80 - 44):
-    print('compress42 CP{}(p[], p[], p[], p[], o[{}], s[{}], c[{}], o[{}]);'.format(i+44, i+44-2, i+44, i+44, i+44))
+for i in range(0, 86 - 60 + 1):
+    print('compress52 CP{}(s[], c[], s[], c[], p[], o[{}], t[{}], s[{}], c[{}], o[{}], t[{}]);'.format(i+60, i+60-1, i+60-1, i+60, i+60, i+60, i+60))
 
 

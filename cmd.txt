@@ -7,3 +7,4 @@ ncverilog test/test_8x8.v src/adder.v src/dadda_8x8_42.v
 ncverilog test/test_8x8.v src/adder.v src/dadda_8x8_52.v
 ncverilog test/test_16x16.v src/adder.v src/dadda_16x16.v
 ncverilog test/test_16x16.v src/adder.v src/dadda_16x16_42.v
+ncverilog test/test_16x16.v src/adder.v src/dadda_16x16_52.v
