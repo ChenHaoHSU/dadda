@@ -55,6 +55,21 @@ module full_adder (
 
 endmodule
 
+module full_adder_opt (
+  input a,
+  input b,
+  input cin,
+  output sum,
+  output cout
+);
+
+  wire xor_ab;
+  assign xor_ab = a ^ b;
+  assign sum = xor_ab ^ cin;
+  assign cout = (a & b) | (cin & xor_ab);
+
+endmodule
+
 ////////////////////////////
 // 4:2 Compressor
 ////////////////////////////
@@ -86,6 +101,31 @@ module compress42 (
     .sum(sum),
     .cout(carry)
   );
+
+endmodule
+
+module compress42_opt (
+  input a,
+  input b,
+  input c,
+  input d,
+  input cin,
+  output sum,
+  output carry,
+  output cout
+);
+  
+  wire xor_ab;
+  wire xor_cd;
+  wire xor_abcd;
+
+  assign xor_ab = a ^ b;
+  assign xor_cd = c ^ d;
+  assign xor_abcd = xor_ab ^ xor_cd;
+
+  assign sum = xor_abcd ^ cin;
+  assign cout = (xor_ab ? c : a);
+  assign carry = (xor_abcd ? cin : d);
 
 endmodule
 
@@ -132,6 +172,32 @@ module compress52 (
     .sum(sum),
     .cout(carry)
   );
+
+endmodule
+
+module compress52_opt (
+  input a,
+  input b,
+  input c,
+  input d,
+  input e,
+  input cin1,
+  input cin2,
+  output sum,
+  output carry,
+  output cout1,
+  output cout2
+);
+  
+  wire xor_abc;
+  wire xor_decin1;
+
+  assign xor_abc = a ^ b ^ c;
+  assign xor_decin1 = d ^ e ^ cin1;
+  assign sum = a ^ b ^ c ^ d ^ e ^ cin1 ^ cin2;
+  assign cout1 = (a & b) | ((a | b) & c);
+  assign cout2 = ((d ^ e) ? cin1 : d);
+  assign carry = (xor_abc ^ xor_decin1) ? cin2 : xor_abc;
 
 endmodule
 

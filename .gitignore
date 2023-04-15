@@ -3,3 +3,5 @@
 xcelium.d/
 xmverilog.history
 xmverilog.log
+
+*.svf
