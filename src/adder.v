@@ -33,35 +33,25 @@ module full_adder (
   output cout
 );
 
-  wire ha1_sum, ha2_sum;
-  wire ha1_carry, ha2_carry;
+  //wire ha1_sum, ha2_sum;
+  //wire ha1_carry, ha2_carry;
 
-  half_adder HA1(
-    .a(a),
-    .b(b),
-    .sum(ha1_sum),
-    .carry(ha1_carry)
-  );
+  //half_adder HA1(
+    //.a(a),
+    //.b(b),
+    //.sum(ha1_sum),
+    //.carry(ha1_carry)
+  //);
  
-  half_adder HA2(
-    .a(cin),
-    .b(ha1_sum),
-    .sum(ha2_sum),
-    .carry(ha2_carry)
-  );
+  //half_adder HA2(
+    //.a(cin),
+    //.b(ha1_sum),
+    //.sum(ha2_sum),
+    //.carry(ha2_carry)
+  //);
 
-  assign sum = ha2_sum;
-  assign cout = ha1_carry | ha2_carry;
-
-endmodule
-
-module full_adder_opt (
-  input a,
-  input b,
-  input cin,
-  output sum,
-  output cout
-);
+  //assign sum = ha2_sum;
+  //assign cout = ha1_carry | ha2_carry;
 
   wire xor_ab;
   assign xor_ab = a ^ b;
@@ -189,15 +179,31 @@ module compress52_opt (
   output cout2
 );
   
-  wire xor_abc;
-  wire xor_decin1;
+  //wire xor_abc;
+  //wire xor_decin1;
 
-  assign xor_abc = a ^ b ^ c;
-  assign xor_decin1 = d ^ e ^ cin1;
-  assign sum = a ^ b ^ c ^ d ^ e ^ cin1 ^ cin2;
-  assign cout1 = (a & b) | ((a | b) & c);
-  assign cout2 = ((d ^ e) ? cin1 : d);
-  assign carry = (xor_abc ^ xor_decin1) ? cin2 : xor_abc;
+  //assign xor_abc = a ^ b ^ c;
+  //assign xor_decin1 = d ^ e ^ cin1;
+  //assign sum = a ^ b ^ c ^ d ^ e ^ cin1 ^ cin2;
+  //assign cout1 = (a & b) | ((a | b) & c);
+  //assign cout2 = ((d ^ e) ? cin1 : d);
+  //assign carry = (xor_abc ^ xor_decin1) ? cin2 : xor_abc;
+
+  wire xor_ab;
+  wire xor_cd;
+  wire xor_abcd;
+  wire xor_ecin1;
+  wire xor_abcdecin1;
+
+  assign xor_ab = a ^ b;
+  assign xor_cd = c ^ d;
+  assign xor_abcd = xor_ab ^ xor_cd;
+  assign xor_ecin1 = e ^ cin1;
+  assign xor_abcdecin1 = xor_abcd ^ xor_ecin1;
+  assign sum = xor_abcdecin1 ^ cin2;
+  assign carry = xor_abcdecin1 ? cin2 : e;
+  assign cout1 = xor_ab ? c : a;
+  assign cout2 = xor_abcd ? cin1 : d;
 
 endmodule
 
